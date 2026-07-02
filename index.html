@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produção UBS</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #000000; margin: 20px; }
+        .container { max-width: 500px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin: 0 auto;}
+        label { font-weight: bold; margin-top: 10px; display: block; }
+        input, select, button { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #333; color: white; cursor: pointer; font-size: 16px; border: none; }
+        button:hover { background-color: #555; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Lançamento de Produção Diária</h2>
+    
+    <label for="data">Data do Atendimento:</label>
+    <input type="date" id="data" required>
+
+    <label for="cargo">Cargo:</label>
+    <select id="cargo" required onchange="filtrarProfissionaisPorCargo()">
+        <option value="">Selecione o cargo...</option>
+        <option value="Médico">Médico</option>
+        <option value="Enfermeiro">Enfermeiro</option>
+        <option value="Dentista">Dentista</option>
+        <option value="Técnico de Enfermagem">Técnico de Enfermagem</option>
+    </select>
+
+    <label for="profissional">Nome do Profissional:</label>
+    <select id="profissional" required disabled onchange="liberarEFiltrarAtendimentos()">
+        <option value="">Selecione o cargo primeiro...</option>
+    </select>
+
+    <label for="tipo">Tipo de Atendimento:</label>
+    <select id="tipo" required disabled>
+        <option value="">Selecione o profissional primeiro...</option>
+        <option value="1">Consulta - Primeira Vez</option>
+        <option value="2">Consulta - Agendada</option>
+        <option value="3">Consulta - Pré Natal</option>
+        <option value="4">Visita Domiciliar</option>
+        <option value="5">Papanicolau</option>
+    </select>
+
+    <label for="quantidade">Quantidade:</label>
+    <input type="number" id="quantidade" min="1" value="1" required>
+
+    <label for="status">Status do Atendimento:</label>
+    <select id="status" required>
+        <option value="Realizado" selected>Realizado</option>
+        <option value="Falta">Falta</option>
+    </select>
+
+    <button onclick="salvarProducao()">Salvar Produção</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
